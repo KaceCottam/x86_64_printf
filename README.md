@@ -53,6 +53,9 @@ void printf(char* fmt, ...) {
           // character :(
           %rsp -= %num_digits * 8;  // pop the string off the stack, so it is reset
           current_arg += 1;
+        default:
+          write(1, "Error printing string\n", 22);
+          return;
       }
     } else {
       write(1, fmt, 1);  // write 1 character per pass
