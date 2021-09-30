@@ -28,6 +28,7 @@ void printf(char* fmt, ...) {
           break;
         case 'd':
           // this one is more difficult
+          // adapted from: http://www.strudel.org.uk/itoa/
           // no allocations, but with register
           %num_digits = 0;
           %value = (%rsp + current_arg * 8);
