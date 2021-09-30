@@ -133,8 +133,8 @@ mov               rax, 10                ; let rax be rbx*10
 mul               rbx                    ; mult by rbx
 mov               rdx, rsi               ; let rdx be tmp_value
 sub               rdx, rax               ; let rdx be tmp_value - value*10
-add               rdx, integerConversion ; let rdx be "9876543210123456789" + (tmp_value - value * 10)
-movsx             rdx, byte [rdx+9]      ; get character at the correct location
+add               rdx, integerConversion ; let rdx be "0123456789" + (tmp_value - value * 10)
+movsx             rdx, byte [rdx]        ; get character at the correct location
 push              rdx                    ; add printed character to list of chars to print
 add               rdi, 1                 ; increment # characters
 mov               rax, rbx               ; let rax be value again
@@ -177,7 +177,7 @@ ret
 section           .data
 errorMsg          db  0xa, "Error printing string", 0xa
 errorMsgLen       equ $ - errorMsg
-integerConversion db "9876543210123456789" ; spooky magic string for printing integers
+integerConversion db "0123456789"        ; spooky magic string for printing integers
 
 section           .text
 global            _start
