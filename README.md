@@ -37,6 +37,7 @@ void printf(char* fmt, ...) {
           if (%value < 0) {
             temp = '-';
             write(1, &temp, 1);
+            %value = -%value;
           }
           do {
             %num_digits++;
